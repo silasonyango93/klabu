@@ -1,0 +1,40 @@
+<?php
+require 'connection.php';
+if($_SERVER["REQUEST_METHOD"]=="POST")
+{
+	
+	createStudent();
+}
+
+function createStudent()
+{
+	global $connection;
+	
+	
+	
+	
+	
+$sql = "SELECT ClassTeacher,StudentName,Subject,Marks,Grade FROM Class INNER JOIN StudentRegistration ON Class.ClassID=StudentRegistration.ClassID INNER JOIN SchoolResults ON StudentRegistration.StudentRegNo=SchoolResults.StudentRegNo
+WHERE StudentRegistration.StudentRegNo=8032;";
+ 
+ $res = mysqli_query($connection,$sql);
+ 
+ if($res)
+ {
+	 while($id=mysqli_fetch_assoc($res)){
+		 $StudentID=$id['StudentID'];
+		 echo $StudentID;
+		
+	 }
+	
+ }
+ 
+  
+ 
+ 
+	mysqli_query($connection,$query) or die(mysqli_error($connection));
+	mysqli_close($connection);
+}
+?>
+
+ 
